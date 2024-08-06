@@ -1,0 +1,435 @@
+.csnavbar {
+  display: flex;
+  padding: 20px;
+  overflow: hidden;
+  background: #002b60;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: visible;
+  font: 12px "opensans-bold", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 auto;
+  z-index: 100;
+  left: 0;
+}
+
+.csnav_img {
+  position: fixed;
+  top: 20px;
+  right: 20px; /* Adjust the right value as needed */
+}
+
+.csnavbar a {
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 6px;
+  text-decoration: none;
+}
+
+.csnavbar a:hover {
+  background: #ddd;
+  color: black;
+  border-radius: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .csnavbar {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .csnav_img {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 780px) {
+  .csnav_img {
+    display: none;
+  }
+}
+
+.headline {
+  font-size: 52px;
+  /* font-weight: 500; */
+  font-weight: bolder;
+  color: #d8d8d8;
+
+  /* background-color: #13102D; */
+  margin: 0;
+  padding-top: 54px;
+  padding-left: 24px;
+}
+
+.mark {
+  background-color: transparent;
+  color: #c7c7c7;
+  text-shadow: 2px 2px #13102d;
+}
+/* Main content */
+.csmain {
+  margin-top: 100px; /* Add a top margin to avoid content overlay */
+}
+
+.open_section {
+  /* background-image: url("/bgtexr.jpg"); */
+
+  /* background: rgba(36, 70, 175, 0.9); */
+  background-size: 1950px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding-top: 96px;
+  padding-bottom: 6px;
+  overflow: hidden;
+}
+
+.cards {
+  /* background-color: #002b60; */
+  /* background-image: url("/bgtexr.jpg"); */
+  /* background-size: cover; */
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+/* #################### NEW CARD #################### NEW CARD #################### NEW CARD #################### NEW CARD #################### NEW CARD  */
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  width: 60%;
+  height: auto; /* Allow height to adjust based on content */
+  border-radius: 4px;
+  float: left;
+  padding: 10px; /* Adjust padding as needed */
+  background-color: #002b4d;
+  color: whitesmoke;
+  text-align: center;
+  transition: 0.2s;
+  font-size: large;
+  flex: 1 1 calc(33.333% - 20px); /* Responsive flex-basis with margin */
+  margin: 10px; /* Adjust margin as needed */
+
+  word-break: break-word; /* Break long words */
+  white-space: normal; /* Allow text to wrap */
+}
+
+.card.red-highlight {
+  background-color: #e57373; /* Red color */
+}
+
+.card.orange-highlight {
+  background-color: #f57c00; /* Orange color */
+}
+
+@media (max-width: 1250px) {
+  .card {
+    flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 780px) {
+  .card {
+    flex: 1 1 calc(100% - 20px); /* Full width for very small screens */
+    width: 80%;
+  }
+}
+
+/* #################### NEW CARD #################### NEW CARD #################### NEW CARD #################### NEW CARD #################### NEW CARD  */
+
+.card:hover {
+  /* background-color: #f1f1e6; */
+  color: whitesmoke;
+  /* color: #000000; */
+
+  background-image: radial-gradient(
+    circle,
+    #002b4d,
+    #00335b,
+    #003b69,
+    #004377,
+    #004b86
+  );
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.p {
+  font-size: large;
+}
+
+.a {
+  font-size: large;
+  color: white;
+  /* margin-left: 100%; */
+}
+/* Style the button */
+
+/* Style the tooltip text */
+
+.flxbtngroup {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  /* padding-left: 47px; */
+}
+
+/****************************************** responsive settings **********************/
+
+@media (max-width: 1250px) {
+  .cards {
+    flex: 100%;
+    flex-direction: column;
+  }
+}
+
+/* @media (max-width: 380px) {
+  .cards{
+    flex: 100%;
+    flex-direction: column;
+  }
+} */
+
+/*#######################################################NEW HOVER SETTINGS ###########################################*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Create 3 equal columns */
+  grid-template-rows: repeat(5, 1fr); /* Create 9 equal rows */
+  grid-gap: 2px; /* Add a 5px gap between buttons */
+}
+
+.modal_btn {
+  width: 35%;
+  height: 35px;
+  background: #ffc546;
+  color: #000000;
+  border: solid 2px #100e0e;
+  border-radius: 10px;
+  /* padding: 5px; */
+  box-shadow: 0 0 3px black;
+  transition: 0.5s;
+  text-align: center;
+}
+
+.modal_container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+.modal {
+  /* background-color: #f1f1e6; */
+  color: whitesmoke;
+  /* color: #000000; */
+
+  background-image: radial-gradient(
+    circle,
+    #002b4d,
+    #00335b,
+    #003b69,
+    #004377,
+    #004b86
+  );
+  padding: 10px;
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* padding: 10px 20px; */
+  border-radius: 5px;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+
+  /* animation */
+  animation-name: animatemodal;
+  animation-duration: 0.4s;
+}
+
+@media (max-width: 1150px) {
+  .modal {
+    /* background-color: #f1f1e6; */
+    color: whitesmoke;
+    /* color: #000000; */
+
+    background-image: radial-gradient(
+      circle,
+      #002b4d,
+      #00335b,
+      #003b69,
+      #004377,
+      #004b86
+    );
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* padding: 10px 20px; */
+    border-radius: 5px;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    /* animation */
+    animation-name: animatemodal;
+    animation-duration: 0.4s;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* Adjust the width for screens with a maximum width of 600px */
+  .img_InModal {
+    width: 100%;
+    height: 100%;
+  }
+}
+.img_InModal {
+  width: 100%;
+  max-width: 100%; /* Optional: Ensure the image doesn't exceed its original size */
+  height: 100%; /* Maintain the image's aspect ratio */
+  display: block; /* Remove any extra space below the image */
+  margin: 5px auto;
+}
+
+.modal:hover {
+  /* background-color: #f1f1e6; */
+  color: whitesmoke;
+  /* color: #000000; */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.button {
+  /* text-transform: uppercase; */
+  background: #827d74;
+  color: #555;
+  border-radius: 6px;
+  /* cursor:pointer; */
+  font-family: "Gill Sans", Impact, sans-serif;
+  font-size: 13px;
+  padding: 5px 10px;
+  margin: 0.1%;
+  /* position: relative; */
+  text-align: center;
+  width: fit-content;
+  transform: translateZ(0);
+  /* webkit text rendering fix */
+}
+
+/*#######################################################TOP NAV HOVER ###########################################*/
+.dropdown .dropbtn {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: inherit;
+  border-top-right-radius: 12px;
+}
+
+.csnavbar a:hover,
+.dropdown:hover .dropbtn {
+  background-color: #c0bebe;
+  color: black;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  top: 50px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.dropdown_content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown_content a:hover {
+  background-color: #0260f7;
+  color: #ddd;
+}
+
+.dropdown:hover .dropdown_content {
+  display: block;
+}
+
+/* styles/Scripts.module.css */
+
+/* styles/Scripts.module.css */
+
+.progressBarContainer {
+  position: fixed;
+  top: 50px; /* Position below the navbar */
+  left: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  height: 5px;
+  z-index: 100; /* Make sure it appears above other content */
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #4caf50; /* Green color for the progress bar */
+  transition: width 0.3s;
+}
+
+.card input[type="checkbox"] {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.card label {
+  font-size: large;
+}
+
+/* Style for the reset button container */
+.resetButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Space from the cards */
+  margin-bottom: 20px; /* Space from the bottom of the page */
+}
+
+/* Style for the reset button */
+.resetButton {
+  background-color: #f44336; /* Red color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 100; /* Make sure it appears above other content */
+}
+
+.resetButton:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
