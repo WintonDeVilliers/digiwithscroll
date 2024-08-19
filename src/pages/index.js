@@ -4,9 +4,19 @@ import styles from "../styles/Scripts.module.css";
 
 export default function Home() {
   const [activeCard, setActiveCard] = useState(null);
-  const [completedSteps, setCompletedSteps] = useState([false, false, false]);
+  const [completedSteps, setCompletedSteps] = useState([
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const [isClient, setIsClient] = useState(false);
+  const [showUncheckedOnly, setShowUncheckedOnly] = useState(false); // New state
 
   useEffect(() => {
+    // Mark the component as mounted on the client side
+    setIsClient(true);
+
     const handleScroll = () => {
       const cards = document.querySelectorAll(`.${styles.card}`);
       let found = null;
@@ -41,11 +51,22 @@ export default function Home() {
   };
 
   const handleReset = () => {
-    setCompletedSteps([false, false, false]);
+    // Clear all checkboxes
+    setCompletedSteps([false, false, false, false, false]);
+
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
   };
 
-  const progress =
-    (completedSteps.filter(Boolean).length / completedSteps.length) * 100;
+  const toggleShowUncheckedOnly = () => {
+    setShowUncheckedOnly((prev) => !prev);
+  };
+
+  const progress = (completedSteps.filter(Boolean).length / 22) * 100;
+
+  if (!isClient) {
+    return null; // Avoid rendering until on the client side
+  }
 
   return (
     <>
@@ -65,101 +86,28 @@ export default function Home() {
             <mark className={styles.mark}>INTRODUCTION</mark>
           </h1>
         </div>
-        <div className={styles.cards}>
-          <div
-            className={`${styles.card} ${
-              activeCard === 0 ? styles["red-highlight"] : ""
-            }`}
-          >
-            <h4>Mandatory Regulatory Compliance</h4>
-            <p>
-              Introduction Good day, may I please speak to (Customer Name)?
-              <br />
-              My name is (Consultants Name) and I am calling you from African
-              Bank.
-              <br />
-            </p>
-            <p>
-              ***(CustomerName), African Bank would like to invite you to apply
-              for our exciting products such as a personal loan, consolidation
-              loan or a credit card.
-            </p>
-            <p>For us to complete the application it might take ±10 minutes</p>
-            <p>Which of these products are you interested in applying for?</p>
-            <label>
-              <input
-                type="checkbox"
-                checked={completedSteps[0]}
-                onChange={() => handleCheckboxChange(0)}
-              />
-              Completed
-            </label>
-          </div>
-          <div
-            className={`${styles.card} ${
-              activeCard === 1 ? styles["orange-highlight"] : ""
-            }`}
-          >
-            <h4>Internal Compliance</h4>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRDCARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <label>
-              <input
-                type="checkbox"
-                checked={completedSteps[1]}
-                onChange={() => handleCheckboxChange(1)}
-              />
-              Completed
-            </label>
-          </div>
-          <div
-            className={`${styles.card} ${
-              activeCard === 2 ? styles["red-highlight"] : ""
-            }`}
-          >
-            <h4>Mandatory Regulatory Compliance</h4>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <p>
-              CARDCARDCARDCARDCARDCARDCARDCACARDCARDCARDCARDCARDCARDCARDCARDRD
-            </p>
-            <label>
-              <input
-                type="checkbox"
-                checked={completedSteps[2]}
-                onChange={() => handleCheckboxChange(2)}
-              />
-              Completed
-            </label>
-          </div>
+
+        <div className={styles.cardContainer}>
+          {completedSteps.map((isCompleted, index) =>
+            !showUncheckedOnly || !isCompleted ? (
+              <div key={index} className={styles.card}>
+                <input
+                  type="checkbox"
+                  checked={isCompleted}
+                  onChange={() => handleCheckboxChange(index)}
+                />
+                <label>Card {index + 1}</label>
+              </div>
+            ) : null
+          )}
         </div>
 
         <div className={styles.resetButtonContainer}>
           <button className={styles.resetButton} onClick={handleReset}>
             Reset
+          </button>
+          <button onClick={toggleShowUncheckedOnly}>
+            {showUncheckedOnly ? "Show All Cards" : "Show Unchecked Cards Only"}
           </button>
         </div>
       </div>
