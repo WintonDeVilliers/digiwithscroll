@@ -1,7 +1,10 @@
 import styles from "../styles/Scripts.module.css";
 import Link from "next/link";
 
-export default function FirstCallHeader() {
+
+export default function FirstCallHeader({ handleReset, toggleShowUncheckedOnly, showUncheckedOnly }) {
+
+
   return (
     <div className={styles.csnavbar}>
       <div className={styles.dropdown}>
@@ -29,7 +32,15 @@ export default function FirstCallHeader() {
       <Link href="#APPOUTCOME">OUTCOME</Link>
       <Link href="#CLOSEOUT">CLOSE-OUT</Link>
       {/* <Link href="#CROSS-SELL">CROSS_SELL</Link> */}
-      <img className={styles.csnav_img} src="africanbank.svg" alt="Pichere" />
+      <div className={styles.buttonsContainer}>
+
+        <button className={styles.resetButton} onClick={handleReset}>
+          RESET
+        </button>
+        <button className={styles.resetButton} onClick={toggleShowUncheckedOnly}>
+        {showUncheckedOnly ? "Show All Cards" : "Show Unchecked Cards Only"}
+        </button>
+      </div>
     </div>
   );
 }

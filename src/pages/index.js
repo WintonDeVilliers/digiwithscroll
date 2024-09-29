@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import FirstCallHeader from "@/components/FirstCallHeader";
+import FirstCallHeader from "../components/FIrstCallHeader";
 import styles from "../styles/Scripts.module.css";
 
 export default function Home() {
@@ -56,7 +56,10 @@ export default function Home() {
 
   return (
     <>
-      <FirstCallHeader />
+      <FirstCallHeader 
+      handleReset={handleReset}
+      toggleShowUncheckedOnly={toggleShowUncheckedOnly}
+      showUncheckedOnly={showUncheckedOnly} />
 
       <div className={styles.progressBarContainer}>
         <div
@@ -130,17 +133,6 @@ export default function Home() {
         ) : null}
       </div>
 
-      <div className={styles.buttonsContainer}>
-        <button className={styles.resetButton} onClick={handleReset}>
-          Reset
-        </button>
-        <button
-          className={styles.toggleButton}
-          onClick={toggleShowUncheckedOnly}
-        >
-          {showUncheckedOnly ? "Show All Cards" : "Show Unchecked Cards Only"}
-        </button>
-      </div>
     </>
   );
 }
